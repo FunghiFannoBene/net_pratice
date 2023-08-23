@@ -55,7 +55,7 @@ il traffico è isolato e quindi si creano mini sottoreti, di cui:
 
 Se due host si trovano in subnet diverse, hanno bisogno di un "mediatore", cioè un dispositivo di livello 3, per facilitare la comunicazione tra di loro. Questo dispositivo sa come gestire e inoltrare il traffico tra diverse subnet.
 
-
+192.168.1.0/24 o 192.168.1.0/255.255.255.0 è la stessa identica cosa
 
 
 COMUNICAZIONE TRA 2 SUBNET DIVERSI:
