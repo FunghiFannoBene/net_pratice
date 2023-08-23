@@ -26,7 +26,8 @@ Ora calcoliamo gli spazi disponibili agli indirizzi di rete:
 Cioè gli 0 e ce ne sono 3
 quindi 2 alla 3.
 
-Che è 8. Ma due di questi sono riservati per l'indirizzo di rete e l'indirizzo di broadcast, lasciando 6 indirizzi utilizzabili per gli host.
+Che è 8. Ma due di questi sono riservati per l'indirizzo di rete e l'indirizzo di broadcast, lasciando 6 indirizzi utilizzabili 
+per gli host.
 
 Indirizzo di rete (non può essere assegnato a un dispositivo; indica l'intera rete)
 Indirizzo utilizzabile 1
@@ -35,7 +36,9 @@ Indirizzo utilizzabile 3
 Indirizzo utilizzabile 4
 Indirizzo utilizzabile 5
 Indirizzo utilizzabile 6
-Indirizzo di broadcast (non può essere assegnato a un dispositivo; viene utilizzato per inviare dati a tutti i dispositivi in quella subnet)
+Indirizzo di broadcast (non può essere assegnato a un dispositivo; viene utilizzato per inviare dati a tutti i dispositivi in 
+quella subnet)
+
 
 La prima subnet inizia a 10.20.4.0 (questo è l'indirizzo di rete della prima subnet).
 Dopo 8 indirizzi, avremo l'indirizzo 10.20.4.8, che è l'indirizzo di rete della prossima subnet.
@@ -49,22 +52,26 @@ La sequenza delle subnet sarà quindi:
 10.20.4.16/29 (da .16 a .23)
 
 il traffico è isolato e quindi si creano mini sottoreti, di cui:
-10.20.4.1 puo comunicare con 10.20.4.2 10.20.4.3 10.20.4.4 10.20.4.5 10.20.4.6 ma non con 10.20.4.9 perchè fa parte di 1 altra subnet!!!
+10.20.4.1 puo comunicare con 10.20.4.2 10.20.4.3 10.20.4.4 10.20.4.5 10.20.4.6 ma non con 10.20.4.9 perchè fa parte di 1 altra 
+subnet!!!
 
 
 
-Se due host si trovano in subnet diverse, hanno bisogno di un "mediatore", cioè un dispositivo di livello 3, per facilitare la comunicazione tra di loro. Questo dispositivo sa come gestire e inoltrare il traffico tra diverse subnet.
+Se due host si trovano in subnet diverse, hanno bisogno di un "mediatore", cioè un dispositivo di livello 3, per facilitare la 
+comunicazione tra di loro. Questo dispositivo sa come gestire e inoltrare il traffico tra diverse subnet.
 
 192.168.1.0/24 o 192.168.1.0/255.255.255.0 è la stessa identica cosa
 
 
 COMUNICAZIONE TRA 2 SUBNET DIVERSI:
 
-Configurazione del router: Assicurati di avere un router con almeno due interfacce. Ogni interfaccia del router sarà configurata con un indirizzo IP di ciascuna subnet. Ad esempio:
+Configurazione del router: Assicurati di avere un router con almeno due interfacce. Ogni interfaccia del router sarà configurata 
+con un indirizzo IP di ciascuna subnet. Ad esempio:
 
 Interfaccia 1 potrebbe avere un indirizzo IP di 10.20.4.2 (dalla subnet 10.20.4.0/29).
 Interfaccia 2 potrebbe avere un indirizzo IP di 10.20.4.10 (dalla subnet 10.20.4.8/29).
-Impostazione del gateway predefinito sugli host: Gli host all'interno di ciascuna subnet dovrebbero avere il loro gateway predefinito (o gateway di uscita) impostato sull'indirizzo IP dell'interfaccia del router che appartiene alla loro subnet.
+Impostazione del gateway predefinito sugli host: Gli host all'interno di ciascuna subnet dovrebbero avere il loro gateway 
+predefinito (o gateway di uscita) impostato sull'indirizzo IP dell'interfaccia del router che appartiene alla loro subnet.
 
 10.20.4.1 avrebbe il suo gateway predefinito impostato su 10.20.4.2.
 10.20.4.9 avrebbe il suo gateway predefinito impostato su 10.20.4.10.
