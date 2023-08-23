@@ -1,0 +1,9 @@
+invalid mask why? 119.184.117.129/ 255.255.255.188
+
+The subnet mask "255.255.255.188" you provided is not a valid subnet mask.
+Subnet masks are composed of consecutive '1' bits starting from the leftmost bit, 
+followed by '0' bits until the end. In the binary format, this looks like a series of 1s 
+followed by 0s (e.g., 11111111.11111111.11111111.11110000).
+
+The subnet mask "255.255.255.188" in binary is 11111111.11111111.11111111.10111100. 
+As you can see, there are non-consecutive 1s and 0s which makes it an invalid mask.
