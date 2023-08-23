@@ -1,0 +1,36 @@
+119.184.117.127/24 
+does it conflict? 119.184.117.2/24 119.184.117.244/255.255.255.192 and 119.184.117.1/255.255.255.128
+
+The confusion lies in how the subnet boundaries are set and which addresses are reserved 
+as network and broadcast addresses within each subnet.
+
+Let's break down the subnets you mentioned:
+
+119.184.117.244/26 (255.255.255.192)
+
+Network Address: 119.184.117.192
+Broadcast Address: 119.184.117.255
+Usable IP Range: 119.184.117.193 to 119.184.117.254
+119.184.117.1/25 (255.255.255.128)
+
+Network Address: 119.184.117.0
+Broadcast Address: 119.184.117.127
+Usable IP Range: 119.184.117.1 to 119.184.117.126
+Given the above breakdown:
+
+119.184.117.127 is the broadcast address for the subnet 119.184.117.0/25.
+This means it's reserved and cannot be assigned to a regular device (like your PC) in this subnet.
+119.184.117.128, on the other hand, would be the next available network address after the /25 subnet, 
+so it would be the start of a new subnet if you were to keep subnetting. But in the context of a /24, 
+it's just another usable IP.
+Thus, the conflict isn't arising due to the overlap between the /25 and /26 subnets you mentioned. 
+The issue with 119.184.117.127 is because it's a broadcast address in the context of the /25 subnet.
+
+When configuring network devices, it's essential to be aware of these reserved addresses. 
+Even if another router isn't using the exact /25 configuration you mentioned, 
+having any device with 119.184.117.127/24 would still pose issues due to the nature of broadcast addresses.
+
+
+
+
+
