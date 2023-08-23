@@ -1,11 +1,12 @@
-Step 1: Find Subnet Number:
-Subtract prefix number from /32
-32 - 29 = 3
+How to calculate a subnet mask from IP address step by step?
+We will work with the IP address 10.20.4.13/29
 
-Calculate Subnet Mask:
-8 bits - 3 bits = 5 bits (Network bits turned on)
-
-You might be asking why 8 bits, 8 bits are required for each octet.
+Trova il subnet:
+sottrai il numero prefisso(29) al massimo cioe 32 (32 è il massimo spazio che possiamo dare a un IPV4)
+e quindi = 32-29 = 3; = 1 1 1 1 1 0 0 0 (OCTECT)
+questo è lo spazio utilizzabile, ma per capirci meglio quanti 1 ci sono?
+8-3 perchè è un otteto e quindi 5, uni che vanno piazzati nei octeti di sinistra e quindi anche maggiori.
+Ovvero 3 come 3 0.
 
 |-------|-------|-------|-------|-------|-------|-------|-------|
 | 128   | 64    | 32    | 16    | 8     | 4     | 2     | 1     |
@@ -16,3 +17,60 @@ You might be asking why 8 bits, 8 bits are required for each octet.
 |-------|-------|-------|-------|-------|-------|-------|-------|
 
 Subnet Mask = 255.255.255.248
+
+2. Trova la dimensione delle subnet:
+2 alla 5(perchè 1 1 1 1 1 0 0 0) gli 1 = riservato a subnet, = 32;
+
+
+Ora calcoliamo gli spazi disponibili agli indirizzi di rete:
+Cioè gli 0 e ce ne sono 3
+quindi 2 alla 3.
+
+Che è 8. Ma due di questi sono riservati per l'indirizzo di rete e l'indirizzo di broadcast, lasciando 6 indirizzi utilizzabili per gli host.
+
+Indirizzo di rete (non può essere assegnato a un dispositivo; indica l'intera rete)
+Indirizzo utilizzabile 1
+Indirizzo utilizzabile 2
+Indirizzo utilizzabile 3
+Indirizzo utilizzabile 4
+Indirizzo utilizzabile 5
+Indirizzo utilizzabile 6
+Indirizzo di broadcast (non può essere assegnato a un dispositivo; viene utilizzato per inviare dati a tutti i dispositivi in quella subnet)
+
+La prima subnet inizia a 10.20.4.0 (questo è l'indirizzo di rete della prima subnet).
+Dopo 8 indirizzi, avremo l'indirizzo 10.20.4.8, che è l'indirizzo di rete della prossima subnet.
+Quindi, la seconda subnet inizia a 10.20.4.8 e termina a 10.20.4.15.
+Il prossimo incremento di 8 porta a 10.20.4.16, che sarà l'indirizzo di rete della terza subnet, e così via.
+
+La sequenza delle subnet sarà quindi:
+
+10.20.4.0/29 (da .0 a .7)
+10.20.4.8/29 (da .8 a .15)
+10.20.4.16/29 (da .16 a .23)
+
+il traffico è isolato e quindi si creano mini sottoreti, di cui:
+10.20.4.1 puo comunicare con 10.20.4.2 10.20.4.3 10.20.4.4 10.20.4.5 10.20.4.6 ma non con 10.20.4.9 perchè fa parte di 1 altra subnet!!!
+
+
+
+Se due host si trovano in subnet diverse, hanno bisogno di un "mediatore", cioè un dispositivo di livello 3, per facilitare la comunicazione tra di loro. Questo dispositivo sa come gestire e inoltrare il traffico tra diverse subnet.
+
+
+
+
+COMUNICAZIONE TRA 2 SUBNET DIVERSI:
+
+Configurazione del router: Assicurati di avere un router con almeno due interfacce. Ogni interfaccia del router sarà configurata con un indirizzo IP di ciascuna subnet. Ad esempio:
+
+Interfaccia 1 potrebbe avere un indirizzo IP di 10.20.4.2 (dalla subnet 10.20.4.0/29).
+Interfaccia 2 potrebbe avere un indirizzo IP di 10.20.4.10 (dalla subnet 10.20.4.8/29).
+Impostazione del gateway predefinito sugli host: Gli host all'interno di ciascuna subnet dovrebbero avere il loro gateway predefinito (o gateway di uscita) impostato sull'indirizzo IP dell'interfaccia del router che appartiene alla loro subnet.
+
+10.20.4.1 avrebbe il suo gateway predefinito impostato su 10.20.4.2.
+10.20.4.9 avrebbe il suo gateway predefinito impostato su 10.20.4.10.
+Comunicazione tra gli host:
+
+Quando 10.20.4.1 vuole comunicare con 10.20.4.9, riconoscerà che 10.20.4.9 non fa parte della sua subnet.
+10.20.4.1 invierà quindi il pacchetto al suo gateway predefinito, che è il router con l'indirizzo IP 10.20.4.2.
+Il router, avendo interfacce in entrambe le subnet, sa come inoltrare il pacchetto a 10.20.4.9 attraverso l'interfaccia 10.20.4.10.
+10.20.4.9 riceve il pacchetto, e quando risponde, il processo si inverte.
