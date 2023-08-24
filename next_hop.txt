@@ -1,0 +1,16 @@
+Esempio:
+
+Immagina di avere una serie di città connesse da strade, e queste città rappresentano i router in una rete. 
+Supponiamo che tu sia nella città A e vuoi arrivare alla città D, ma non c'è una strada diretta da A a D.
+
+Città A (Router A) è collegata alla Città B (Router B).
+Città B (Router B) è collegata alla Città C (Router C).
+Città C (Router C) è infine collegata alla Città D (Router D).
+Ora, tu sei nella Città A e vuoi arrivare alla Città D:
+
+Destinazione: Città D.
+Quando chiedi indicazioni nella Città A, ti dicono: "Vai prima alla Città B". Quindi, in questo caso, 
+la Città B è il Next Hop.
+Una volta arrivato nella Città B e chiesto di nuovo come raggiungere la Città D, ti dicono: "Vai alla Città C". 
+Qui, la Città C diventa il Next Hop.
+Infine, nella Città C, ti dicono che la Città D è la prossima tappa. Così raggiungi la tua destinazione.
