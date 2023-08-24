@@ -1,0 +1,16 @@
+CAN I CONNECT TO IT?
+
+Now you may ask, how do I know if two devices are part of the same network?
+For this you need to combine the IP-address and the mask of the devices in order to get the network-adress, 
+that device is part of.
+By combining I mean, doing a bit-by-bit-AND-opperation.
+For that we first need to translate the IP and the mask to binary.
+i.e.:
+IP: 192.168.100.1 in binary: 11000000.10101000.1100100.00000001
+MASK: 255.255.255.0 in binary: 11111111.11111111.11111111.00000000
+Now you just combine the two bit by bit, if both bits are a 1 the corresponding bit of the network-address is 1
+, in any other case the corresponding bit is 0.
+
+By doing that to the mentioned example, you should get the network-address of
+11000000.10101000.1100100.00000000 in binary or 192.168.100.0 in dot-decimal.
+If two devices share the same network-address, they are part of the same network and communication is ensured.
