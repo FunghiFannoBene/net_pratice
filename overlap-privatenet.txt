@@ -1,0 +1,2 @@
+You can overlap your own router with hop but not another router collegated with the first one!!
+You should always check if a network is private or public!
